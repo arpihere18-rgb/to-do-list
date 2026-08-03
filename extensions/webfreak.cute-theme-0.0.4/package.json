@@ -1,0 +1,40 @@
+{
+	"name": "cute-theme",
+	"displayName": "Cute Pink Light Theme",
+	"description": "A cute pink light theme for VSCode",
+	"icon": "icon.png",
+	"version": "0.0.4",
+	"publisher": "webfreak",
+	"keywords": [
+		"cute",
+		"pink",
+		"light theme",
+		"theme"
+	],
+	"license": "CC0-1.0",
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"galleryBanner": {
+		"theme": "light",
+		"color": "#fcdee9"
+	},
+	"repository": "https://gitlab.com/WebFreak001/cute-vscode.git",
+	"contributes": {
+		"themes": [
+			{
+				"label": "Cute",
+				"uiTheme": "vs",
+				"path": "./themes/cute.json"
+			}
+		]
+	},
+	"__metadata": {
+		"installedTimestamp": 1781586672646,
+		"targetPlatform": "undefined",
+		"size": 328628
+	}
+}

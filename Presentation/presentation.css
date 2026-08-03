@@ -1,0 +1,14 @@
+#body {
+    background-color: honeydew;
+    text-align: center;
+}
+
+#style {
+    border: 1px solid black;
+    background-color: aliceblue;
+    line-height: 30px;
+    width: 550px;
+    align-items: center;
+    margin-left: 200px;
+
+}

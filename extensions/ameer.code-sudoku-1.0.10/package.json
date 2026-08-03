@@ -1,0 +1,217 @@
+{
+	"name": "code-sudoku",
+	"displayName": "Sudoku Game",
+	"version": "1.0.10",
+	"description": "Vscode Sudoku Game",
+	"main": "./build/extension.js",
+	"publisher": "ameer",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.81.0"
+	},
+	"keywords": [
+		"sudoku",
+		"game",
+		"vscode"
+	],
+	"pricing": "Free",
+	"repository": {
+		"url": "https://github.com/smartameer/vscode-sudoku",
+		"type": "github"
+	},
+	"funding": [
+		{
+			"type": "buymeacoffee",
+			"url": "https://www.buymeacoffee.com/smartameer"
+		}
+	],
+	"extensionKind": [
+		"ui",
+		"workspace"
+	],
+	"categories": [
+		"Other"
+	],
+	"icon": "media/logo_128x128.png",
+	"activationEvents": [],
+	"contributes": {
+		"configuration": [
+			{
+				"title": "Sudoku",
+				"properties": {
+					"sudoku.gameLevel": {
+						"title": "Game level",
+						"type": "string",
+						"enum": [
+							"easy",
+							"normal",
+							"hard",
+							"evil"
+						],
+						"default": "normal"
+					},
+					"sudoku.gameTheme": {
+						"title": "Game theme",
+						"type": "string",
+						"enum": [
+							"editor",
+							"original"
+						],
+						"default": "editor"
+					}
+				}
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "sudoku-game",
+					"title": "Sudoku",
+					"icon": "media/icon.svg"
+				}
+			]
+		},
+		"views": {
+			"sudoku-game": [
+				{
+					"type": "webview",
+					"id": "sudoku.game",
+					"name": "Game",
+					"visibility": "visible",
+					"contextualTitle": "Sudoku",
+					"initialSize": 260,
+					"icon": "media/icon.svg"
+				},
+				{
+					"type": "tree",
+					"id": "sudoku.scoreboard",
+					"name": "Scoreboard",
+					"visibility": "visible",
+					"contextualTitle": "Sudoku",
+					"initialSize": 260,
+					"icon": "$(gift)"
+				}
+			]
+		},
+		"viewsWelcome": [
+			{
+				"view": "sudoku.scoreboard",
+				"contents": "No scores recorded.\nEnjoy playing sudoku game and win."
+			}
+		],
+		"commands": [
+			{
+				"command": "sudoku.new",
+				"category": "Game",
+				"title": "New game",
+				"icon": "$(empty-window)",
+				"shortTitle": "New"
+			},
+			{
+				"command": "sudoku.solve",
+				"category": "Game",
+				"title": "Solve game",
+				"icon": "$(play)",
+				"shortTitle": "Solve"
+			},
+			{
+				"command": "sudoku.validate",
+				"category": "Game",
+				"title": "Validate game",
+				"icon": "$(check-all)",
+				"shortTitle": "Validate"
+			},
+			{
+				"command": "sudoku.settings",
+				"category": "Game",
+				"title": "Game level",
+				"icon": "$(gear)",
+				"shortTitle": "Level"
+			},
+			{
+				"command": "sudoku.theme",
+				"category": "Game",
+				"title": "Change theme",
+				"icon": "$(color-mode)",
+				"shortTitle": "Theme"
+			},
+			{
+				"command": "sudoku.scoreboard.refresh",
+				"category": "Scoreboard",
+				"title": "Show scoreboard",
+				"icon": "$(refresh)",
+				"shortTitle": "Show scoreboard"
+			}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "sudoku.new",
+					"group": "navigation@2",
+					"when": "view == sudoku.game"
+				},
+				{
+					"command": "sudoku.validate",
+					"group": "navigation@1",
+					"when": "view == sudoku.game"
+				},
+				{
+					"command": "sudoku.solve",
+					"group": "1_header@1",
+					"when": "view == sudoku.game"
+				},
+				{
+					"command": "sudoku.scoreboard.refresh",
+					"group": "navigation@1",
+					"when": "view == sudoku.scoreboard"
+				},
+				{
+					"command": "sudoku.settings",
+					"group": "2_header@1",
+					"when": "view == sudoku.game"
+				},
+				{
+					"command": "sudoku.theme",
+					"group": "2_header@2",
+					"when": "view == sudoku.game"
+				}
+			],
+			"commandPalette": [
+				{
+					"command": "sudoku.validate",
+					"when": "false"
+				},
+				{
+					"command": "sudoku.solve",
+					"when": "false"
+				},
+				{
+					"command": "sudoku.theme",
+					"when": "false"
+				},
+				{
+					"command": "sudoku.scoreboard.refresh",
+					"when": "false"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint \"src/**/*.ts\"",
+		"watch": "tsc -w -p ./"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.81.0",
+		"@typescript-eslint/eslint-plugin": "^6.4.1",
+		"@typescript-eslint/parser": "^6.4.1",
+		"eslint": "^8.0.1",
+		"typescript": "^5.1.6"
+	},
+	"__metadata": {
+		"installedTimestamp": 1780556791118,
+		"targetPlatform": "undefined",
+		"size": 196829
+	}
+}

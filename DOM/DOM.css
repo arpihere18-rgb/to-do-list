@@ -1,0 +1,10 @@
+.Hero {
+    background-color: rgb(255, 199, 209);
+    text-align: center;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin: 5px;
+}
