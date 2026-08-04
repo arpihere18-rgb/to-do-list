@@ -1,9 +1,75 @@
-.done {
-    text-decoration: line-through;
-    color: maroon;
+.clearBtn {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    color: rgb(201, 172, 172);
+    transition: 0.3s;
 }
 
-.remove {
-    text-decoration: line-through;
-    color: maroon;
+.addBtn {
+    background: #28a745;
+}
+
+.addBtn:hover {
+    background: #218838;
+}
+
+.clearBtn {
+    background: #a1787c;
+}
+
+.clearBtn:hover {
+    background: #ae666e;
+}
+
+/* Task List */
+#tasklist {
+    list-style: none;
+    margin-top: 15px;
+}
+
+#tasklist li {
+    background: #ac7348c6;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+/* Completed Task */
+
+/* Buttons */
+.completeBtn,
+.deleteBtn {
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.completeBtn {
+    background: #42623f;
+}
+
+.completeBtn:hover {
+    background: #4e684bfb;
+}
+
+.deleteBtn {
+    background: #dc3545;
+}
+
+.deleteBtn:hover {
+    background: #b52a37;
+}
+
+#body {
+    background-color: pink;
+    text-align: center;
 }
