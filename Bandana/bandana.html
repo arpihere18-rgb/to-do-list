@@ -4,32 +4,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>TO-DO LIST</title>
   <link rel="stylesheet" href="bandana.css">
-
 </head>
 
 <body id="body">
-  <h1> TO-DO LIST</h1>
 
-  <input type="text" id="taskinput" placeholder="enter your task">
-  <button onclick="addTask()">add task </button>
+  <h1>TO-DO LIST</h1>
 
-  <button onclick="cleartsk()" id="text"> clear all</button>
+  <input type="text" id="taskinput" placeholder="Enter your task">
 
-  <ul id="list"></ul>
+  <select id="priority">
+    <option value="High">High</option>
+    <option value="Medium">Medium</option>
+    <option value="Low">Low</option>
+  </select>
 
+  <button onclick="addTask()" id="addBtn" class="addBtn">
+    Add Task
+  </button>
 
-  <ul id="tasklist">
-  </ul>
+  <button onclick="cleartsk()" id="clearBtn" class="clearBtn">
+    Clear All
+  </button>
 
-  <h3>Total task : <span id="totaltask"> 0</span></h3>
-  <h3>completed task : <span id="completedtask"> 0</span></h3>
+  <ul id="tasklist"></ul>
 
+  <h3>Total Task : <span id="totaltask">0</span></h3>
 
+  <h3>Completed Task : <span id="completedtask">0</span></h3>
 
-
-
+  <h3>Pending Task : <span id="PendingTask">0</span></h3>
 
   <script src="bandana.js"></script>
 

@@ -1,75 +1,145 @@
-.clearBtn {
-    padding: 12px 18px;
+/* Body */
+#body {
+    background-color: pink;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+#divi {
+    background-color: rgba(143, 110, 110, 0.852);
+    margin-left: 200px;
+    margin-right: 200px;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+#hi {
+    color: rgb(198, 8, 8);
+}
+
+/* Input */
+#taskinput {
+    padding: 10px;
+    width: 250px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+/* Add Button */
+#addBtn {
+    padding: 10px 16px;
+    background-color: #28a745;
+    color: white;
     border: none;
-    border-radius: 8px;
-    color: rgb(201, 172, 172);
-    transition: 0.3s;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-.addBtn {
-    background: #28a745;
+#addBtn:hover {
+    background-color: #218838;
 }
 
-.addBtn:hover {
-    background: #218838;
+/* Clear Button */
+#clearBtn {
+    padding: 10px 16px;
+    background-color: #d75260;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-.clearBtn {
-    background: #a1787c;
-}
-
-.clearBtn:hover {
-    background: #ae666e;
+#clearBtn:hover {
+    background-color: #a04b55;
 }
 
 /* Task List */
 #tasklist {
     list-style: none;
-    margin-top: 15px;
+    padding: 0;
+    margin-top: 20px;
 }
 
 #tasklist li {
-    background: #ac7348c6;
-    margin-bottom: 10px;
+    width: 70%;
+    margin: 10px auto;
     padding: 12px;
+    background-color: #ac7348c6;
     border-radius: 8px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 8px;
+    align-items: center;
 }
 
 /* Completed Task */
-
-/* Buttons */
-.completeBtn,
-.deleteBtn {
-    border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 14px;
+.done {
+    text-decoration: line-through;
+    color: rgb(188, 15, 15);
+    opacity: 0.7;
 }
 
+/* Task Buttons */
+.completeBtn,
+.editBtn,
+.deleteBtn {
+    padding: 8px 12px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Complete Button */
 .completeBtn {
-    background: #42623f;
+    background-color: green;
 }
 
 .completeBtn:hover {
-    background: #4e684bfb;
+    background-color: darkgreen;
 }
 
+/* Edit Button */
+.editBtn {
+    background-color: orange;
+}
+
+.editBtn:hover {
+    background-color: darkorange;
+}
+
+/* Delete Button */
 .deleteBtn {
-    background: #dc3545;
+    background-color: red;
 }
 
 .deleteBtn:hover {
-    background: #b52a37;
+    background-color: darkred;
 }
 
-#body {
-    background-color: pink;
-    text-align: center;
+.priority-badge {
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.high {
+    background: red;
+}
+
+.medium {
+    background: orange;
+}
+
+.low {
+    background: green;
+}
+
+.done {
+    text-decoration: line-through;
+    opacity: 0.6;
 }

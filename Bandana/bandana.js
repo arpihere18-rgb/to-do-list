@@ -1,107 +1,139 @@
-const input = document.getElementById("taskinput");  // select gareako input vanne lai 
+const input = document.getElementById("taskinput");
 const tasklist = document.getElementById("tasklist");
-const Totaltask = document.getElementById("totaltask");
+const totaltask = document.getElementById("totaltask");
 const completedtask = document.getElementById("completedtask");
+const PendingTask = document.getElementById("PendingTask");
+const priorityInput = document.getElementById("priority");
 
 let total = 0;
 let completed = 0;
 
-function addTask() {
-    let task = input.value   // task ko value yeta task ma store hunxa 
+function updatePendingTask() {
+    PendingTask.innerText = total - completed;
+}
 
-    if (task == "") {
-        alert("please enter the task");
-        return tasklist;    // khali vye pachi run hunna 
+function addTask() {
+
+    let task = input.value.trim();
+    let priority = priorityInput.value;
+
+    if (task === "") {
+        alert("Please enter a task");
+        return;
     }
 
+    let li = document.createElement("li");
 
-    let li = document.createElement("li"); // create list item 
-    li.innerText = task;   // task bhitra ko value dinxa inner task le 
+    let taskText = document.createElement("span");
+    taskText.innerText = task;
 
+    let priorityBadge = document.createElement("span");
+    priorityBadge.innerText = priority;
+    priorityBadge.className = "priority-badge";
 
-    // create complete button 
+    if (priority === "High") {
+        priorityBadge.classList.add("high");
+    } else if (priority === "Medium") {
+        priorityBadge.classList.add("medium");
+    } else {
+        priorityBadge.classList.add("low");
+    }
 
     let completeBtn = document.createElement("button");
-    completeBtn.innerText = "complete";     // created the complete button 
+    completeBtn.innerText = "Complete";
     completeBtn.className = "completeBtn";
 
-
-    let deleteBtn = document.createElement("button");
-    deleteBtn.innerText = "delete";         // created the delete button 
-    deleteBtn.className = "deleteBtn";
-
     let editBtn = document.createElement("button");
-    editBtn.innerText = "edit";
+    editBtn.innerText = "Edit";
     editBtn.className = "editBtn";
 
+    let deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "Delete";
+    deleteBtn.className = "deleteBtn";
 
-    // add button inside Li 
+    li.appendChild(taskText);
+    li.appendChild(priorityBadge);
     li.appendChild(completeBtn);
-    li.appendChild(deleteBtn); // li is parent
     li.appendChild(editBtn);
-
+    li.appendChild(deleteBtn);
 
     tasklist.appendChild(li);
 
     total++;
-    Totaltask.innerText = total;
+    totaltask.innerText = total;
+    updatePendingTask();
 
-
-
-    input.value = "";  // remove the input value once used 
-
+    input.value = "";
+    priorityInput.selectedIndex = 0;
 
     completeBtn.onclick = function () {
 
         if (li.classList.contains("done")) {
             li.classList.remove("done");
             completed--;
+            completeBtn.innerText = "Complete";
         } else {
             li.classList.add("done");
             completed++;
+            completeBtn.innerText = "Undo";
         }
 
         completedtask.innerText = completed;
+        updatePendingTask();
     };
 
     deleteBtn.onclick = function () {
 
-        if (li.classList.contains("done")) {
-            completed--;
-            completedtask.innerText = completed;
-        }
-        total--;
-        totaltask.innerText = total;
+        if (confirm("Do you want to delete this task?")) {
 
-        li.remove();
+            if (li.classList.contains("done")) {
+                completed--;
+                completedtask.innerText = completed;
+            }
+
+            total--;
+            totaltask.innerText = total;
+            updatePendingTask();
+
+            li.remove();
+        }
     };
 
     editBtn.onclick = function () {
-        let newtask = prompt("edit your task", task);
 
-        if (newtask.trim() == "") {
+        let newTask = prompt("Edit your task", taskText.innerText);
+
+        if (newTask === null) return;
+
+        newTask = newTask.trim();
+
+        if (newTask === "") {
             alert("Task cannot be empty");
             return;
         }
-        task = newtask;
-        li.firstChild.textContent = task;
-    }
 
-
-
-};
-function cleartsk() {
-    tasklist.innerHTML = "";
-    total = 0;
-    completed = 0;
-    totaltask.innerText = total;
-    completedtask.innerText = completed;
-
-
+        taskText.innerText = newTask;
+    };
 }
 
+function cleartsk() {
+
+    if (confirm("Clear all tasks?")) {
+
+        tasklist.innerHTML = "";
+
+        total = 0;
+        completed = 0;
+
+        totaltask.innerText = total;
+        completedtask.innerText = completed;
+
+        updatePendingTask();
+    }
+}
 
 input.addEventListener("keydown", function (event) {
+
     if (event.key === "Enter") {
         addTask();
     }
